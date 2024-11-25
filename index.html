@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nạp tiền vào tài khoản</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Nạp tiền vào tài khoản</h1>
+        <form id="payment-form">
+            <label for="name">Họ và Tên:</label>
+            <input type="text" id="name" placeholder="Nhập họ và tên" required>
+
+            <label for="amount">Số tiền cần nạp (VNĐ):</label>
+            <input type="number" id="amount" placeholder="Nhập số tiền" required>
+
+            <button type="submit">Xác nhận thông tin</button>
+        </form>
+
+        <div id="qr-container" style="display: none;">
+            <h2>Quét mã QR để chuyển tiền:</h2>
+            <div id="qrcode"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
