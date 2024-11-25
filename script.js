@@ -13,8 +13,8 @@ document.getElementById("payment-form").addEventListener("submit", function (e) 
     // Thông tin tài khoản ngân hàng của chủ website
     const bankAccount = {
         bankName: "VCB", // Ví dụ: Vietcombank (VCB)
-        accountNumber: "0123456789", // Số tài khoản ngân hàng
-        accountName: "NGUYEN VAN A", // Tên chủ tài khoản
+        accountNumber: "1024517650", // Số tài khoản ngân hàng
+        accountName: "LAM NHAT HUY", // Tên chủ tài khoản
     };
 
     // Dữ liệu chuẩn tạo QR ngân hàng theo chuẩn Napas
