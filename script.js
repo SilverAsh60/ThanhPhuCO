@@ -12,7 +12,7 @@ document.getElementById("payment-form").addEventListener("submit", function (e) 
 
     // Thông tin tài khoản ngân hàng của chủ website
     const bankAccount = {
-        bankName: "VietcomBank", // Ví dụ: Vietcombank (VCB)
+        bankName: "VCB", // Ví dụ: Vietcombank (VCB)
         accountNumber: "1024517650", // Số tài khoản ngân hàng
         accountName: "LAM NHAT HUY", // Tên chủ tài khoản
     };
