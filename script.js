@@ -1,7 +1,7 @@
 document.getElementById("payment-form").addEventListener("submit", function (e) {
-    e.preventDefault(); // Ngăn không reload trang
+    e.preventDefault(); // Prevent form submission
 
-    // Lấy thông tin từ form
+    // Get input values
     const name = document.getElementById("name").value.trim();
     const amount = document.getElementById("amount").value.trim();
 
@@ -10,14 +10,14 @@ document.getElementById("payment-form").addEventListener("submit", function (e) 
         return;
     }
 
-    // Thông tin tài khoản ngân hàng của chủ website
+    // Vietcombank account details
     const bankAccount = {
-        bankName: "VCB", // Ví dụ: Vietcombank (VCB)
-        accountNumber: "1024517650", // Số tài khoản ngân hàng
-        accountName: "LAM NHAT HUY", // Tên chủ tài khoản
+        bankName: "VCB", // Vietcombank
+        accountNumber: "0123456789", // Replace with your account number
+        accountName: "NGUYEN VAN A" // Replace with your account name
     };
 
-    // Dữ liệu chuẩn tạo QR ngân hàng theo chuẩn Napas
+    // Format QR data as a string (e.g., in JSON format or other bank-required structure)
     const qrData = `
       {"bankName": "${bankAccount.bankName}",
       "accountNumber": "${bankAccount.accountNumber}",
@@ -26,16 +26,19 @@ document.getElementById("payment-form").addEventListener("submit", function (e) 
       "note": "Nap tien ${name}"}
     `;
 
-    // Hiển thị mã QR
+    // Show the QR container
     const qrContainer = document.getElementById("qr-container");
     qrContainer.style.display = "block";
 
+    // Clear previous QR code (if any)
     const qrCodeDiv = document.getElementById("qrcode");
-    qrCodeDiv.innerHTML = ""; // Xóa mã QR cũ nếu có
+    qrCodeDiv.innerHTML = "";
 
+    // Generate QR code
     QRCode.toCanvas(qrCodeDiv, qrData, function (error) {
         if (error) {
-            console.error("Không thể tạo mã QR:", error);
+            console.error("Error generating QR code:", error);
+            alert("Không thể tạo mã QR. Vui lòng thử lại!");
         }
     });
 });
