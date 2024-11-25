@@ -1,5 +1,5 @@
 document.getElementById("payment-form").addEventListener("submit", function (e) {
-    e.preventDefault(); // Prevent form submission
+    e.preventDefault(); // Prevent page reload
 
     // Get input values
     const name = document.getElementById("name").value.trim();
@@ -12,25 +12,20 @@ document.getElementById("payment-form").addEventListener("submit", function (e) 
 
     // Vietcombank account details
     const bankAccount = {
-        bankName: "VCB", // Vietcombank
-        accountNumber: "0123456789", // Replace with your account number
-        accountName: "NGUYEN VAN A" // Replace with your account name
+        bankName: "VCB",
+        accountNumber: "1024517650", // Replace with your actual account number
+        accountName: "LAM NHAT HUY" // Replace with your actual account name
     };
 
-    // Format QR data as a string (e.g., in JSON format or other bank-required structure)
-    const qrData = `
-      {"bankName": "${bankAccount.bankName}",
-      "accountNumber": "${bankAccount.accountNumber}",
-      "accountName": "${bankAccount.accountName}",
-      "amount": "${amount}",
-      "note": "Nap tien ${name}"}
-    `;
+    // Construct QR data string
+    const qrData = encodeURIComponent(`VCB|${bankAccount.accountNumber}|${bankAccount.accountName}|${amount}|Nap tien ${name}`);
+    console.log("QR Data:", qrData);
 
     // Show the QR container
     const qrContainer = document.getElementById("qr-container");
     qrContainer.style.display = "block";
 
-    // Clear previous QR code (if any)
+    // Clear existing QR code
     const qrCodeDiv = document.getElementById("qrcode");
     qrCodeDiv.innerHTML = "";
 
@@ -39,6 +34,8 @@ document.getElementById("payment-form").addEventListener("submit", function (e) 
         if (error) {
             console.error("Error generating QR code:", error);
             alert("Không thể tạo mã QR. Vui lòng thử lại!");
+        } else {
+            console.log("QR code successfully generated!");
         }
     });
 });
