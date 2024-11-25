@@ -27,7 +27,7 @@ document.getElementById("payment-form").addEventListener("submit", function (e) 
 
     // Clear existing QR code
     const qrCodeDiv = document.getElementById("qrcode");
-    qrCodeDiv.innerHTML = "";
+    qrCodeDiv.innerHTML = ""; // Clear previous QR code if any
 
     // Generate QR code
     QRCode.toCanvas(qrCodeDiv, qrData, function (error) {
